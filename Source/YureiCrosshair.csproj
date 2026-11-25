@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Targets .NET Framework 4.8, which ships with Windows 10/11:
+       produces one small .exe with nothing extra to install. -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyName>YureiCrosshair</AssemblyName>
+    <RootNamespace>YureiCrosshair</RootNamespace>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <Version>1.0.0</Version>
+    <Product>Yurei Crosshair</Product>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- Only needed when building on Linux/macOS (uses Mono's reference assemblies).
+       On Windows with Visual Studio this is ignored. -->
+  <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
+    <FrameworkPathOverride>/usr/lib/mono/4.8-api</FrameworkPathOverride>
+    <AutomaticallyUseReferenceAssemblyPackages>false</AutomaticallyUseReferenceAssemblyPackages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <EmbeddedResource Include="logo.png" LogicalName="logo.png" />
+  </ItemGroup>
+
+</Project>
